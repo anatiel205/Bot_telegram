@@ -1,6 +1,4 @@
 #!/bin/bash
-# Verifica instalações
-./check_gunicorn.sh
-
-# Inicia o serviço
-exec gunicorn --bind 0.0.0.0:$PORT --timeout 120 --workers 4 bot:app
+echo "Verificando instalação do Gunicorn..."
+pip show gunicorn || pip install gunicorn==20.1.0
+gunicorn --bind 0.0.0.0:$PORT --workers 4 bot:app
